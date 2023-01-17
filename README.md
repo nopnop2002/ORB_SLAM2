@@ -188,6 +188,8 @@ cd dataset
 wget https://vision.in.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_xyz.tgz    # 427M Bytes
 tar -zxf rgbd_dataset_freiburg1_xyz.tgz
 ./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt Examples/Monocular/TUM1.yaml dataset/rgbd_dataset_freiburg1_xyz
+./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt Examples/Monocular/TUM2.yaml dataset/rgbd_dataset_freiburg1_xyz
+./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt Examples/Monocular/TUM3.yaml dataset/rgbd_dataset_freiburg1_xyz
 ```
 
 ## KITTI Dataset  
