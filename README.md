@@ -183,6 +183,11 @@ This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono
 
 2. Execute the following command. Change `TUMX.yaml` to TUM1.yaml,TUM2.yaml or TUM3.yaml for freiburg1, freiburg2 and freiburg3 sequences respectively. Change `PATH_TO_SEQUENCE_FOLDER`to the uncompressed sequence folder.
 ```
+./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt Examples/Monocular/TUMX.yaml PATH_TO_SEQUENCE_FOLDER
+```
+
+Example: Download a sequence from the rgbd_dataset_freiburg1_xyz.   
+```
 mkdir dataset
 cd dataset
 wget https://vision.in.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_xyz.tgz    # 427M Bytes
