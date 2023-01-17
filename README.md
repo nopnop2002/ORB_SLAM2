@@ -62,7 +62,38 @@ We have tested the library in **Ubuntu 12.04**, **14.04** and **16.04**, but it 
 We use the new thread and chrono functionalities of C++11.
 
 ## Pangolin
-We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface. Dowload and install instructions can be found at: https://github.com/stevenlovegrove/Pangolin.
+We use [Pangolin](https://github.com/stevenlovegrove/Pangolin) for visualization and user interface.   
+See below for download and installation instructions.
+```
+# Clone the repository
+cd $HOME
+git clone --recursive https://github.com/stevenlovegrove/Pangolin.git
+# Install dependencies
+cd Pangolin
+./scripts/install_prerequisites.sh recommended
+# Checkout v0.6 --> IMPORTANT
+git checkout -b v0.6
+# Build
+mkdir build
+cd build
+cmake ..
+cmake --build .
+# Testing
+ctest
+# Run the sample code
+cd $HOME/Pangolin
+cd examples
+cd HelloPangolin
+mkdir build
+cd build
+cmake ..
+make
+./HelloPangolin 
+```
+
+
+
+Dowload and install instructions can be found at: https://github.com/stevenlovegrove/Pangolin.
 
 ## OpenCV
 We use [OpenCV](http://opencv.org) to manipulate images and features. Dowload and install instructions can be found at: http://opencv.org. **Required at leat 2.4.3. Tested with OpenCV 2.4.11 and OpenCV 3.2**.
