@@ -101,7 +101,47 @@ make
 Dowload and install instructions can be found at: https://github.com/stevenlovegrove/Pangolin.
 
 ## OpenCV
-We use [OpenCV](http://opencv.org) to manipulate images and features. Dowload and install instructions can be found at: http://opencv.org. **Required at leat 2.4.3. Tested with OpenCV 2.4.11 and OpenCV 3.2**.
+We use [OpenCV](http://opencv.org) to manipulate images and features.   
+See below for download and installation instructions.
+```
+# Download the installation script
+cd $HOME
+wget https://raw.githubusercontent.com/milq/milq/5b7c3332c78b3a2dd952321f247a72b13a3026db/scripts/bash/install-opencv.sh
+
+# Change version to install
+vi install-opencv.sh
+------------------------------------------------------------
+#OPENCV_VERSION='4.5.1'       # Version to be installed
+OPENCV_VERSION='3.4.16'       # Version to be installed
+
+#make -j8
+make -j4
+------------------------------------------------------------
+
+# Install
+chmod +x install-opencv.sh
+./install-opencv.sh
+
+# Check version
+opencv_version
+3.4.16
+
+# Build the included example
+cd $HOME/OpenCV/samples/
+cmake -B build
+cmake --build build
+
+# Version display
+build/cpp/example_cpp_opencv_version
+
+# JPEG display
+build/cpp/example_cpp_image data/lena.jpg
+
+# USB camera capture
+build/cpp/example_cpp_videocapture_basic
+build/cpp/example_cpp_videocapture_camera
+```
+
 
 ## Eigen3
 Required by g2o (see below). Download and install instructions can be found at: http://eigen.tuxfamily.org. **Required at least 3.1.0**.
