@@ -282,6 +282,21 @@ For a monocular input from topic `/camera/image_raw` run node ORB_SLAM2/Mono. Yo
   ```
   rosrun ORB_SLAM2 Mono PATH_TO_VOCABULARY PATH_TO_SETTINGS_FILE
   ```
+**Example**: Download a rosbag (LSD_room.bag) from [here](https://vision.in.tum.de/webshare/g/lsd/LSD_room.bag.zip). Open 3 tabs on the terminal and run the following command at each tab:
+  ```
+  roscore
+  ```
+  
+  ```
+  rosrun ORB_SLAM2 Mono Vocabulary/ORBvoc.txt Examples/Monocular/TUM1.yaml
+  ```
+  
+  ```
+  wget https://vision.in.tum.de/webshare/g/lsd/LSD_room.bag.zip
+  unzip LSD_room.bag.zip
+  rosbag play LSD_room.bag /image_raw:=/camera/image_raw
+  ```
+  
   
 ### Running Monocular Augmented Reality Demo
 This is a demo of augmented reality where you can use an interface to insert virtual cubes in planar regions of the scene.
