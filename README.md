@@ -68,18 +68,23 @@ See below for download and installation instructions.
 # Clone the repository
 cd $HOME
 git clone --recursive https://github.com/stevenlovegrove/Pangolin.git
+
 # Install dependencies
 cd Pangolin
 ./scripts/install_prerequisites.sh recommended
+
 # Checkout v0.6 --> IMPORTANT
 git checkout -b v0.6
+
 # Build
 mkdir build
 cd build
 cmake ..
 cmake --build .
+
 # Testing
 ctest
+
 # Run the sample code
 cd $HOME/Pangolin
 cd examples
