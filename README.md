@@ -142,14 +142,14 @@ build/cpp/example_cpp_videocapture_camera
 ## Eigen3
 Required by g2o (see below). Download and install instructions can be found at: http://eigen.tuxfamily.org. **Required at least 3.1.0**.
 ```
-$ cd $HOME
-$ wget https://gitlab.com/libeigen/eigen/-/archive/3.1.0/eigen-3.1.0.zip
-$ unzip eigen-3.1.0.zip
-$ cd eigen-3.1.0
-$ mkdir build
-$ cd build
-$ cmake ..
-$ sudo make install
+cd $HOME
+wget https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.zip
+unzip eigen-3.4.0.zip
+cd eigen-3.4.0
+mkdir build
+cd build
+cmake ..
+sudo make install
 ```
 
 ## DBoW2 and g2o (Included in Thirdparty folder)
@@ -184,7 +184,7 @@ This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono
 2. Execute the following command. Change `TUMX.yaml` to TUM1.yaml,TUM2.yaml or TUM3.yaml for freiburg1, freiburg2 and freiburg3 sequences respectively. Change `PATH_TO_SEQUENCE_FOLDER`to the uncompressed sequence folder.
 ```
 mkdir dataset
-cd　dataset
+cd dataset
 wget https://vision.in.tum.de/rgbd/dataset/freiburg1/rgbd_dataset_freiburg1_xyz.tgz    # 427M Bytes
 tar -zxf rgbd_dataset_freiburg1_xyz.tgz
 ./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt Examples/Monocular/TUM1.yaml dataset/rgbd_dataset_freiburg1_xyz
