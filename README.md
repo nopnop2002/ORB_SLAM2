@@ -96,10 +96,6 @@ make
 ./HelloPangolin 
 ```
 
-
-
-Dowload and install instructions can be found at: https://github.com/stevenlovegrove/Pangolin.
-
 ## OpenCV
 We use [OpenCV](http://opencv.org) to manipulate images and features.   
 See below for download and installation instructions.
@@ -145,6 +141,16 @@ build/cpp/example_cpp_videocapture_camera
 
 ## Eigen3
 Required by g2o (see below). Download and install instructions can be found at: http://eigen.tuxfamily.org. **Required at least 3.1.0**.
+```
+$ cd $HOME
+$ wget https://gitlab.com/libeigen/eigen/-/archive/3.1.0/eigen-3.1.0.zip
+$ unzip eigen-3.1.0.zip
+$ cd eigen-3.1.0
+$ mkdir build
+$ cd build
+$ cmake ..
+$ sudo make install
+```
 
 ## DBoW2 and g2o (Included in Thirdparty folder)
 We use modified versions of the [DBoW2](https://github.com/dorian3d/DBoW2) library to perform place recognition and [g2o](https://github.com/RainerKuemmerle/g2o) library to perform non-linear optimizations. Both modified libraries (which are BSD) are included in the *Thirdparty* folder.
@@ -156,7 +162,7 @@ We provide some examples to process the live input of a monocular, stereo or RGB
 
 Clone the repository:
 ```
-git clone https://github.com/raulmur/ORB_SLAM2.git ORB_SLAM2
+git clone https://github.com/nopnop2002/ORB_SLAM2 ORB_SLAM2
 ```
 
 We provide a script `build.sh` to build the *Thirdparty* libraries and *ORB-SLAM2*. Please make sure you have installed all required dependencies (see section 2). Execute:
@@ -165,6 +171,7 @@ cd ORB_SLAM2
 chmod +x build.sh
 ./build.sh
 ```
+
 
 This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono_tum**, **mono_kitti**, **rgbd_tum**, **stereo_kitti**, **mono_euroc** and **stereo_euroc** in *Examples* folder.
 
