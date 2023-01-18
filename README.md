@@ -287,13 +287,15 @@ For a monocular input from topic `/camera/image_raw` run node ORB_SLAM2/Mono. Yo
   roscore
   ```
   
-  ```
+  ``` 
+  # /Mono node read /camera/image_raw topic.
   rosrun ORB_SLAM2 Mono Vocabulary/ORBvoc.txt Examples/Monocular/TUM1.yaml
   ```
   
   ```
   wget https://vision.in.tum.de/webshare/g/lsd/LSD_room.bag.zip
   unzip LSD_room.bag.zip
+  # Remap from /image_raw to /camera/image_raw
   rosbag play LSD_room.bag /image_raw:=/camera/image_raw
   ```
   
