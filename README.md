@@ -277,7 +277,7 @@ tar -zxf rgbd_dataset_freiburg1_xyz.tgz
   ```
   
 ### Running Monocular Node
-For a monocular input from topic `/camera/image_raw` run node ORB_SLAM2/Mono. You will need to provide the vocabulary file and a settings file. See the monocular examples above.
+For a monocular, input from topic `/camera/image_raw` and run node ORB_SLAM2/Mono. You will need to provide the vocabulary file and a settings file. See the monocular examples above.
 
   ```
   rosrun ORB_SLAM2 Mono PATH_TO_VOCABULARY PATH_TO_SETTINGS_FILE
@@ -288,7 +288,7 @@ For a monocular input from topic `/camera/image_raw` run node ORB_SLAM2/Mono. Yo
   ```
   
   ``` 
-  # /Mono node read /camera/image_raw topic.
+  # /Mono read /camera/image_raw topic.
   rosrun ORB_SLAM2 Mono Vocabulary/ORBvoc.txt Examples/Monocular/TUM1.yaml
   ```
   
