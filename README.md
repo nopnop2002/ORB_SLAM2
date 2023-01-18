@@ -186,7 +186,7 @@ This will create **libORB_SLAM2.so**  at *lib* folder and the executables **mono
 ./Examples/Monocular/mono_tum Vocabulary/ORBvoc.txt Examples/Monocular/TUMX.yaml PATH_TO_SEQUENCE_FOLDER
 ```
 
-Example: Download a sequence from the rgbd_dataset_freiburg1_xyz.   
+**Example**: Download a sequence from the rgbd_dataset_freiburg1_xyz.   
 ```
 mkdir dataset
 cd dataset
