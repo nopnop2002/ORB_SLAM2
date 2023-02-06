@@ -177,8 +177,9 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 
 		// Build to geometry_msgs::Pose
 		geometry_msgs::Pose Pose;
+		// Vector3.float64 --> Point.float64
 		Pose.position.x = transform.translation.x;
-		Pose.position.y = transform.translation.y;
+		Pose.position.y = transform.translation.y; 
 		Pose.position.z = transform.translation.z;
 		Pose.orientation = transform.rotation;
 
