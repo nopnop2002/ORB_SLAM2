@@ -141,7 +141,6 @@ geometry_msgs::TransformStamped ConvertPositionToTransformStamped (std_msgs::Hea
 	return trans_msg;
 }
 
-
 void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 {
     // Copy the ros image message to cv::Mat.
@@ -175,7 +174,19 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 		geometry_msgs::TransformStamped transformStamped;
 		transformStamped = ConvertPositionToTransformStamped(cv_ptr->header, m, "/child");
 		std::cout << "transformStamped=" << transformStamped << std::endl << std::endl;
-	}
+
+		// Build to geometry_msgs::Pose
+		geometry_msgs::Pose Pose;
+		Pose.position.x = transform.translation.x;
+		Pose.position.y = transform.translation.y;
+		Pose.position.z = transform.translation.z;
+		Pose.orientation = transform.rotation;
+
+		// Build to geometry_msgs::PoseStamped
+		geometry_msgs::PoseStamped PoseStamped;
+		PoseStamped.header = transformStamped.header;
+		PoseStamped.pose = Pose;
+	}	
 }
 
 
