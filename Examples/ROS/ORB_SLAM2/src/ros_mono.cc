@@ -46,6 +46,9 @@ public:
     ORB_SLAM2::System* mpSLAM;
 };
 
+ros::Publisher pub_pose;
+ros::Publisher pub_poseStamped;
+
 int main(int argc, char **argv)
 {
 	printf("main start\n");
@@ -70,6 +73,10 @@ int main(int argc, char **argv)
     ros::NodeHandle nodeHandler;
     ros::Subscriber sub = nodeHandler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage,&igb);
 
+	//ros::Publisher pose_pub = nodeHandler.advertise<geometry_msgs::Pose>("orb_pose", 1000);
+	pub_pose = nodeHandler.advertise<geometry_msgs::Pose>("pose", 1000);
+	pub_poseStamped = nodeHandler.advertise<geometry_msgs::PoseStamped>("poseStamped", 1000);
+
 	printf("spin start\n");
     ros::spin();
 	printf("spin end\n");
@@ -85,6 +92,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
+// https://github.com/appliedAI-Initiative/orb_slam_2_ros/blob/master/ros/src/Node.cc
 tf2::Transform TransformFromMat (cv::Mat position_mat) {
   cv::Mat rotation(3,3,CV_32F);
   cv::Mat translation(3,1,CV_32F);
@@ -168,25 +176,29 @@ void ImageGrabber::GrabImage(const sensor_msgs::ImageConstPtr& msg)
 		// Convert to geometry_msgs::Transform
 		geometry_msgs::Transform transform;
 		transform = ConvertPositionToTransform(cv_ptr->header, m);
-		std::cout << "transform=" << transform << std::endl << std::endl;
+		//std::cout << "transform=" << transform << std::endl << std::endl;
 
 		// Convert to geometry_msgs::TransformStamped
 		geometry_msgs::TransformStamped transformStamped;
 		transformStamped = ConvertPositionToTransformStamped(cv_ptr->header, m, "/child");
-		std::cout << "transformStamped=" << transformStamped << std::endl << std::endl;
+		//std::cout << "transformStamped=" << transformStamped << std::endl << std::endl;
 
 		// Build to geometry_msgs::Pose
-		geometry_msgs::Pose Pose;
+		geometry_msgs::Pose pose;
 		// Vector3.float64 --> Point.float64
-		Pose.position.x = transform.translation.x;
-		Pose.position.y = transform.translation.y; 
-		Pose.position.z = transform.translation.z;
-		Pose.orientation = transform.rotation;
+		pose.position.x = transform.translation.x;
+		pose.position.y = transform.translation.y; 
+		pose.position.z = transform.translation.z;
+		pose.orientation = transform.rotation;
+		std::cout << "pose=" << pose << std::endl << std::endl;
 
-		// Build to geometry_msgs::PoseStamped
-		geometry_msgs::PoseStamped PoseStamped;
-		PoseStamped.header = transformStamped.header;
-		PoseStamped.pose = Pose;
+		// Build to geometry_msgs::poseStamped
+		geometry_msgs::PoseStamped poseStamped;
+		poseStamped.header = transformStamped.header;
+		poseStamped.pose = pose;
+
+		//pub_pose.publish(pose);
+		pub_poseStamped.publish(poseStamped);
 	}	
 }
 
